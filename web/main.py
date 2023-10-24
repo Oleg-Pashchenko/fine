@@ -84,11 +84,16 @@ def admin_shop_create_post():
     image = request.files['photo']
     image.save('uploads/' + image.filename)
     try:
-        item = ShopItems(name=name, price=int(price), quantity=int(quantity), image_url=image.filename)
-        session.add(item)
-        session.commit()
+        price, quantity = int(price), int(quantity)
     except:
         return redirect('/admin/shop/create-item')
+
+    if price <= 0 or quantity <= 0:
+        return redirect('/admin/shop/create-item')
+
+    item = ShopItems(name=name, price=int(price), quantity=int(quantity), image_url=image.filename)
+    session.add(item)
+    session.commit()
 
     return redirect('/admin/shop')
 
