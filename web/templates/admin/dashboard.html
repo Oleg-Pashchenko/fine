@@ -1,0 +1,63 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Вы находитесь в админке 4rays 👋!</h1>
+    <p class="lead">Здесь вы можете производить все необходимые взаимодействия с пользователями, настраивать магазин,
+        управлять заказами, создавать квизы, а также назначать события.</p>
+    <p class="lead">Желаем хорошего дня!</p>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{url_for('static', filename='users.svg')}}" style="height: 250px;" class="card-img-top"
+                 alt="SVG Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">Пользователи</h5>
+                <a href="/admin/users" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{url_for('static', filename='shop.svg')}}" style="height: 250px;" class="card-img-top"
+                 alt="SVG Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">Магазин</h5>
+                <a href="/admin/shop" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{url_for('static', filename='orders.svg')}}" style="height: 250px;" class="card-img-top"
+                 alt="SVG Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">Заказы</h5>
+                <a href="/admin/orders" class="btn btn-primary">Перейти</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{url_for('static', filename='events.svg')}}" style="height: 250px;" class="card-img-top"
+                 alt="SVG Image">
+            <div class="card-body text-center">
+            <h5 class="card-title">События</h5>
+            <a href="/admin/events" class="btn btn-primary">Перейти</a>
+        </div>
+    </div>
+</div>
+<div class="col-12 col-md-4 mt-3">
+    <div class="card rounded-20">
+        <img src="{{url_for('static', filename='quizes.svg')}}" style="height: 250px;" class="card-img-top"
+             alt="SVG Image">
+        <div class="card-body text-center">
+            <h5 class="card-title">Квизы</h5>
+            <a href="/admin/quizes" class="btn btn-primary">Перейти</a>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

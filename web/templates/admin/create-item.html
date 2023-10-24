@@ -1,0 +1,34 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Создать товар</h1>
+    <p class="lead">Пожалуйста, укажите название, цену, количество, а также прикрепите изображение</p>
+</div>
+<form action="/admin/shop/create-item" method="post" enctype="multipart/form-data">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="name">Название:</span>
+        </div>
+        <input type="text" class="form-control" name="name" placeholder="Название товара" aria-label="name"
+               aria-describedby="name" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="price">Цена:</span>
+        </div>
+        <input type="number" class="form-control" name="price" placeholder="Цена товара" aria-label="price"
+               aria-describedby="price" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="quantity">Количество:</span>
+        </div>
+        <input type="number" class="form-control" name="quantity" placeholder="Количество товара" aria-label="quantity"
+               aria-describedby="quantity" required>
+    </div>
+    <div class="input-group">
+    <input class="form-control form-control-lg" id="formFileLg" name="photo" type="file" required/>
+    </div>
+    <button class="btn btn-primary">Добавить товар</button>
+</form>
+{% endblock %}

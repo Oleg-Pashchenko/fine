@@ -1,0 +1,17 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Добро пожаловать в админку 4rays 👋!</h1>
+    <p class="lead">Пожалуйста, укажите пароль для доступа в админ панель</p>
+</div>
+<form action="/admin" method="post">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Пароль:</span>
+        </div>
+        <input type="text" class="form-control" name="passphrase" placeholder="Введите кодовый пароль" aria-label="Username"
+               aria-describedby="basic-addon1">
+        <button class="btn btn-primary">Войти</button>
+    </div>
+</form>
+{% endblock %}

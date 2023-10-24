@@ -1,0 +1,36 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Вы находитесь в редакторе магазина 🛒!</h1>
+    <p class="lead">В данном меню у вас есть возможность создать новый товар, а также редактировать уже
+        существующие!</p>
+
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{url_for('static', filename='plus.svg')}}" style="height: 250px;" class="card-img-top"
+                 alt="SVG Image">
+            <div class="card-body text-center">
+                <h5 class="card-title">Создать товар</h5>
+                <a href="/admin/shop/create-item" class="btn btn-primary">Создать</a>
+            </div>
+        </div>
+    </div>
+    {% for item in items %}
+    <div class="col-12 col-md-4 mt-3">
+        <div class="card rounded-20">
+            <img src="{{ url_for('uploaded_file', filename=item.image_url) }}" style="height: 250px;"
+                 class="card-img-top">
+
+            <div class="card-body text-center">
+                <h5 class="card-title">{{item.name}}</h5>
+                <a href="/admin/shop/edit-item?item_id={{item.id}}" class="btn btn-primary">Редактировать</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
