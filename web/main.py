@@ -1,12 +1,12 @@
 from datetime import timedelta
 from flask import Flask, redirect, flash, request
 from flask import session
-from web.routes.main import main_bp
-from web.routes.shop import shop_bp
-from web.routes.users import users_bp
-from web.routes.orders import orders_bp
-from web.routes.events import events_bp
-from web.routes.quizes import quizes_bp
+from routes.main import main_bp
+from routes.shop import shop_bp
+from routes.users import users_bp
+from routes.orders import orders_bp
+from routes.events import events_bp
+from routes.quizes import quizes_bp
 from utils import dotenv_values
 
 app = Flask(__name__)
