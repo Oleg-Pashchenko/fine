@@ -13,7 +13,7 @@
     <p class="lead">В данном меню вы можете изменять название, цену, количество, а также изображение</p>
 </div>
 <form action="/admin/shop/edit-item?item_id={{item.id}}" method="post" enctype="multipart/form-data">
-     <img src="{{ url_for('uploaded_file', filename=item.image_url) }}" style="width: 250px; height: 250px;"
+     <img src="{{ url_for('shop.uploaded_file', filename=item.image_url) }}" style="width: 250px; height: 250px;"
                  class="center">
     <div class="input-group mb-3 mt-3">
         <div class="input-group-prepend">

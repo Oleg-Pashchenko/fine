@@ -1,0 +1,38 @@
+/* Основной фон страницы */
+body {
+    background-color: rgb(25, 33, 42); /* Change the background color to lavender or another color of your choice */
+    color: #ffffff;
+}
+
+
+/* Заголовки и текст */
+h1, h2, h3, h4, h5, h6 {
+    color: rebeccapurple;
+}
+p {
+    color: black;
+}
+
+
+/* Фон навбара */
+.navbar {
+    background-color:  rgb(10, 40, 50);
+}
+
+/* Ссылки в навбаре */
+.navbar a {
+    color: #ffffff;
+}
+
+/* Активная ссылка в навбаре */
+.navbar a.active {
+    color: #007bff;
+}
+
+/* Кнопки */
+
+
+/* Таблицы */
+.table {
+    color: #ffffff;
+}

@@ -1,0 +1,12 @@
+.navbar {
+    background-color: #292b2c;
+}
+/* Ссылки в навбаре */
+.navbar a {
+    color: #ffffff;
+}
+
+/* Активная ссылка в навбаре */
+.navbar a.active {
+    color: #007bff;
+}

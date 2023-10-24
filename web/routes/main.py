@@ -25,3 +25,4 @@ def admin_login_post():
 @login_required
 def admin_dashboard():
     return render_template("admin/dashboard.html")
+
