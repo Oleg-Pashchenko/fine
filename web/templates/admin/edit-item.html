@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "admin_base.html" %}
+{% block content %}
+<style>
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<div class="jumbotron">
+    <h1 class="display-4">Редактировать товар</h1>
+    <p class="lead">В данном меню вы можете изменять название, цену, количество, а также изображение</p>
+</div>
+<form action="/admin/shop/edit-item?item_id={{item.id}}" method="post" enctype="multipart/form-data">
+     <img src="{{ url_for('uploaded_file', filename=item.image_url) }}" style="width: 250px; height: 250px;"
+                 class="center">
+    <div class="input-group mb-3 mt-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="name">Название:</span>
+        </div>
+        <input type="text" class="form-control" name="name" placeholder="Название товара" aria-label="name"
+               aria-describedby="name" value="{{item.name}}" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="price">Цена:</span>
+        </div>
+        <input type="number" class="form-control" name="price" placeholder="Цена товара" aria-label="price"
+               aria-describedby="price" value="{{item.price}}" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="quantity">Количество:</span>
+        </div>
+        <input type="number" class="form-control" name="quantity" placeholder="Количество товара" aria-label="quantity"
+               aria-describedby="quantity" value="{{item.quantity}}" required>
+    </div>
 
-</body>
-</html>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="photo">Изменить фото:</span>
+        </div>
+        <input class="form-control form-control-lg" id="formFileLg" name="photo" type="file" aria-label="photo" />
+    </div>
+    <button class="btn btn-primary">Изменить товар</button>
+    <a class="btn btn-danger" href="/admin/shop/delete-item?item_id={{item.id}}">Удалить товар</a>
+</form>
+{% endblock %}
