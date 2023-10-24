@@ -1,11 +1,6 @@
 from datetime import timedelta
 from flask import Flask, redirect, flash, request
 from flask import session
-import os
-
-current_dir = os.getcwd()
-parent_dir = os.path.dirname(current_dir)
-os.chdir(parent_dir)
 from web.routes.main import main_bp
 from web.routes.shop import shop_bp
 from web.routes.users import users_bp
