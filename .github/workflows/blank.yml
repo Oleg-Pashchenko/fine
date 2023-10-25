@@ -12,16 +12,14 @@ jobs:
     steps:
     - name: Set up SSH
       run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H 178.253.40.164 >> ~/.ssh/known_hosts
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        # Install sshpass for password-based authentication
+        sudo apt-get -y install sshpass
+      # You may need to use a different package manager based on your runner's OS.
 
     - name: SSH Connection
       run: |
-        ssh -i ~/.ssh/id_rsa root@178.253.40.164 "touch win"
+        sshpass -p b7Z+a.Fpa2^9jC ssh root@178.253.40.164 "touch win"
+
       # Replace "command-to-run-on-server" with the actual command you want to execute on the server.
 
     # Add more steps as needed
