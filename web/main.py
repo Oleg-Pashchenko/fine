@@ -11,6 +11,7 @@ from utils import dotenv_values
 
 app = Flask(__name__)
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=60)
+app.config['MAX_CONTENT_LENGTH'] = 64 * 1024 * 1024  # 32 МБ в байтах
 app.secret_key = dotenv_values["FLASK_SECRET_KEY"]
 app.register_blueprint(main_bp, url_prefix="/")
 app.register_blueprint(shop_bp, url_prefix="/")
