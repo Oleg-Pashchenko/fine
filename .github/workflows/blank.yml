@@ -6,18 +6,29 @@ on:
       - main  # Change this to your main branch
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$SSH_PRIVATE_KEY" > ../private.key
+          sudo chmod 600 ../private.key
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
+          SSH_KNOWN_HOSTS: ${{secrets.SSH_KNOWN_HOSTS}}
+          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-
-    - name: Deploy to Server
-      run: |
-        ssh -i $SSH_KEY $SSH_USER@$SSH_HOST "cd $PROJECT_FOLDER && git pull && docker-compose up --build -d"
-      env:
-        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_USER: ${{ secrets.SSH_USER }}
-        PROJECT_FOLDER: ${{ secrets.PROJECT_FOLDER }}
+      - name: Deploy to Server
+        run: |
+          ssh -i $SSH_KEY_PATH root@178.253.40.164 "cd $PROJECT_FOLDER && git pull && docker-compose up --build -d"
+        env:
+          SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          PROJECT_FOLDER: ${{ secrets.PROJECT_FOLDER }}
