@@ -21,13 +21,14 @@ jobs:
         ssh-keyscan -t rsa $SSH_HOST >> ~/.ssh/known_hosts
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        # SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Deploy to Server
       run: |
         ssh -i ~/.ssh/id_rsa $SSH_USER@$SSH_HOST "cd PROJECT_FOLDER && git pull && docker-compose up --build -d"
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
         SSH_USER: ${{ secrets.SSH_USER }}
         PROJECT_FOLDER: ${{ secrets.PROJECT_FOLDER }}
         # You can use SSH_PASSWORD if you prefer password-based authentication
