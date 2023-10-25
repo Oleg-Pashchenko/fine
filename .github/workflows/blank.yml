@@ -12,14 +12,8 @@ jobs:
     steps:
     - name: Set up SSH
       run: |
-        # Install sshpass for password-based authentication
         sudo apt-get -y install sshpass
-      # You may need to use a different package manager based on your runner's OS.
 
     - name: SSH Connection
       run: |
-        sshpass -p b7Z+a.Fpa2^9jC ssh root@178.253.40.164 "touch win"
-
-      # Replace "command-to-run-on-server" with the actual command you want to execute on the server.
-
-    # Add more steps as needed
+        sshpass -p 'b7Z+a.Fpa2^9jC' ssh root@178.253.40.164 "touch win"
