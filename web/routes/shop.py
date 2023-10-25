@@ -34,7 +34,7 @@ def admin_shop_create_post():
     if name is None or price is None or quantity is None or photo is None:
         return redirect("/admin/shop/create-item")
     image = request.files["photo"]
-    image.save("uploads/" + image.filename)
+    image.save("web/uploads/" + image.filename)
     try:
         price, quantity = int(price), int(quantity)
     except:
@@ -86,7 +86,7 @@ def admin_shop_edit_post():
         return redirect(f"/admin/shop/edit-item?item_id={item_id}")
     if photo:
         image = request.files["photo"]
-        image.save("uploads/" + image.filename)
+        image.save("web/uploads/" + image.filename)
     try:
         price, quantity = int(price), int(quantity)
     except:
