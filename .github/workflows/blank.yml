@@ -6,8 +6,26 @@ on:
       - main  # Change this to your main branch
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Print Secrets
+      run: |
+        echo "SSH_HOST: $SSH_HOST"
+        echo "SSH_USER: $SSH_USER"
+        echo "PROJECT_FOLDER: $PROJECT_FOLDER"
+        echo "SSH_PASSWORD: $SSH_PASSWORD"
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+        PROJECT_FOLDER: ${{ secrets.PROJECT_FOLDER }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+
   deploy:
     runs-on: ubuntu-latest
+
+    needs: debug  # This ensures that the debug job runs before the deployment job
 
     steps:
     - name: Checkout code
