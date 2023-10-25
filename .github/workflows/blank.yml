@@ -1,19 +1,16 @@
-name: SSH Deploy
-
-on:
-  push:
-    branches:
-      - main
-
+name: remote ssh command
+on: [push]
 jobs:
-  deploy:
+
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-    - name: Set up SSH
-      run: |
-        sudo apt-get -y install sshpass
-
-    - name: SSH Connection
-      run: |
-        sshpass -p 'b7Z+a.Fpa2^9jC' ssh root@178.253.40.164 "touch win"
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: 22
+        script: whoami
