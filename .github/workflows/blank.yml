@@ -13,4 +13,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cat pobeda
+        script: |
+          whoami
+          touch pobeda
+          ls -al
