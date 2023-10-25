@@ -10,11 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
     - name: Deploy to Server
       run: |
-        sshpass -p $SSH_PASSWORD ssh $SSH_USER@$SSH_HOST "cd $PROJECT_FOLDER && git pull && docker-compose up --build -d"
+        ssh -i $SSH_KEY $SSH_USER@$SSH_HOST "cd $PROJECT_FOLDER && git pull && docker-compose up --build -d"
       env:
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         SSH_HOST: ${{ secrets.SSH_HOST }}
         SSH_USER: ${{ secrets.SSH_USER }}
         PROJECT_FOLDER: ${{ secrets.PROJECT_FOLDER }}
-        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
