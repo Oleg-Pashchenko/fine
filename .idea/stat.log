@@ -1,0 +1,11 @@
+{"ts":1698339574523,"action":"FILE_OPENED","file":"/Dockerfile","tags":{"FILE_LINE_OF_CODE":"12"}}
+{"ts":1698339574738,"action":"PROJECT_OPENED","tags":{"PROJECT_NAME":"4rays"}}
+{"ts":1698339575408,"action":"FILE_CLOSED","file":"/Dockerfile","tags":{"FILE_LINE_OF_CODE":"12"}}
+{"ts":1698339575408,"action":"FILE_OPENED","file":"/web/templates/admin/edit-item.html","tags":{"FILE_LINE_OF_CODE":"49"}}
+{"ts":1698339587910,"action":"PROJECT_CLOSED","tags":{"PROJECT_NAME":"4rays"}}
+{"ts":1698410937927,"action":"FILE_OPENED","file":"/Dockerfile","tags":{"FILE_LINE_OF_CODE":"12"}}
+{"ts":1698410938210,"action":"PROJECT_OPENED","tags":{"PROJECT_NAME":"4rays"}}
+{"ts":1698410938538,"action":"FILE_CLOSED","file":"/Dockerfile","tags":{"FILE_LINE_OF_CODE":"12"}}
+{"ts":1698410938538,"action":"FILE_OPENED","file":"/web/templates/admin/edit-item.html","tags":{"FILE_LINE_OF_CODE":"49"}}
+{"ts":1698411013598,"action":"IDE_DEACTIVATED"}
+{"ts":1698411018487,"action":"IDE_ACTIVATED"}
