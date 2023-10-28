@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}4rays | Админ панель{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+{% if disable_navbar == None %}
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/">Fine 👋</a>
+        <a class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <img src="{% static 'content/toggle.svg' %}" alt="Toggle"
+                 style="width: 24px; height: 24px; color: white;">
+        </a>
+        <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/my-day">Мой день</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/finance/review">Финансы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/notes/list">Заметки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/targets/list">Цели</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/tasks/list">Задачи</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endif %}
+
+<div class="container">
+    <br/>
+    <div class="row justify-content-center m-5">
+        <div class="col-12">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        </div>
+    </div>
+    {% block content %}{% endblock %}
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</div>
+
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
