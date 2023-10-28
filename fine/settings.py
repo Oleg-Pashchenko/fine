@@ -9,7 +9,9 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['clown.su',
+                 'localhost:8000',
+                 '0.0.0.0:8082']
 
 INSTALLED_APPS = [
     "django.contrib.auth",
