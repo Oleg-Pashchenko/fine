@@ -3,7 +3,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from main import dp
 from aiogram import types, F
 from misc import texts
-
+from web.models import *
 # Keyboards
 menu_markup = ReplyKeyboardMarkup(
     keyboard=[
@@ -17,6 +17,22 @@ menu_markup = ReplyKeyboardMarkup(
 # Handlers
 @dp.message(Command(texts.start_command))
 async def welcome_command(message: types.Message):
+    all_users = session.query(Users).all()
+    is_exists = False
+    for user in all_users:
+        if user.telegram_id == message.chat.id:
+            is_exists = True
+
+    if not is_exists:
+        user = Users(
+            telegram_id=message.chat.id,
+            username=message.chat.username,
+            first_name=message.chat.first_name,
+            last_name=message.chat.last_name,
+            money=0
+        )
+        session.add(user)
+        session.commit()
     await message.answer(texts.start_message)
     await menu_command(message)
 

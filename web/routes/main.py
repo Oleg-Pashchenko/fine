@@ -7,6 +7,7 @@ main_bp = Blueprint("main", __name__)
 
 @main_bp.route("/admin", methods=["GET"])
 def admin_login():
+    print('yes')
     return render_template("admin/auth.html")
 
 

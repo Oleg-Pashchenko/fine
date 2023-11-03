@@ -9,3 +9,4 @@ events_bp = Blueprint("events", __name__)
 @login_required
 def admin_events():
     return render_template("admin/events.html")
+

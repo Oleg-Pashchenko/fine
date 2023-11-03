@@ -27,15 +27,15 @@ class Users(Base):
     username = Column(String, nullable=True)
     first_name = Column(String, nullable=True)
     last_name = Column(String, nullable=True)
-    last_activity = Column(DateTime, nullable=False)
     money = Column(Integer, nullable=False, default=0)
-    orders = relationship("Orders", backref="user")
 
 
 class Orders(Base):
     __tablename__ = "orders"
     id = Column(Integer, primary_key=True)
+    owner_id = Column(Integer, nullable=False)
     order_secret_key = Column(Integer, nullable=False)
+    buy_price = Column(Integer, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     item_id = Column(Integer, ForeignKey("shopitems.id"), nullable=False)
     shop_item = relationship("ShopItems", back_populates="order")
