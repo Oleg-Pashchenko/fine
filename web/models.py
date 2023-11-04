@@ -39,9 +39,7 @@ class Orders(Base):
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     item_id = Column(Integer, ForeignKey("shopitems.id"), nullable=False)
     shop_item = relationship("ShopItems", back_populates="order")
-
-    def __init__(self):
-        self.order_secret_key = random.randint(10000, 100000)
+    stage = Column(String)
 
 
 class ShopItems(Base):
